@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import { Form, Icon, Input, Button,} from 'antd'
+import { connect } from 'react-redux'
+import {createDemo1Action,createDemo2Action} from '../../redux/action_creators/test_action'
 import './css/login.less'
-import logo from './imgs/logo.png'
+import logo from './imgs/logo2.png'
 const {Item} = Form // 不能写在import之前
 
 
 class Login extends Component {
+    componentDidMount(){
+        console.log(this.props.test);
+    }
 
     // 点击登录按钮的回调
     handleSubmit = (event) =>{
@@ -37,7 +42,7 @@ class Login extends Component {
             <div className='login'>
                 <header>
                     <img src={logo} alt="logo" />
-                    <h1>商品管理系统</h1>
+                    <h1>商品管理系统{this.props.test}</h1>
                 </header>
                     <section>
                         <h1>用户登录</h1>
@@ -95,4 +100,11 @@ class Login extends Component {
         )
     }
 }
-export default Form.create()(Login)
+
+export default connect(
+    state => ({test:state.test}),
+    {
+        demo1:createDemo1Action,
+        demo2:createDemo2Action
+    }
+)(Form.create()(Login))
