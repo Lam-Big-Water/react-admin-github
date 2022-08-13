@@ -10,13 +10,13 @@ const {Item} = Form // 不能写在import之前
 
 
 class Login extends Component {
+
+
     // 点击登录按钮的回调
     handleSubmit = (event) =>{
         event.preventDefault();//阻止默认事件--禁止form表单提交--通过ajax发送
-        // 表单的统一验证
         this.props.form.validateFields(async(err, values) => {
             // values 的值是： {username：xxx，password：yyy}
-            // 获取用户输入
             const {username,password} = values
             if(!err){
                 // reqLogin(username,password)
@@ -26,9 +26,7 @@ class Login extends Component {
                 // .catch((reason)=>{
                 //     console.log(reason)
                 // })
-                // 若用户输入无错误，发送登录请求
                 let result = await reqLogin(username,password)
-                // 从响应中获取：请求状态，错误信息，数据
                 const {status,msg,data} = result
                 if(status === 0){
                     console.log(data);
@@ -37,8 +35,12 @@ class Login extends Component {
                     // 2.跳转到admin
                     this.props.history.replace('/admin')
                     
-                }else message.warning(msg)
-            } else message.error('表单输入有误，请检查！')
+                }else{
+                    message.warning(msg)
+                }
+            } else {
+                message.error('表单输入有误，请检查！')
+            }
         });
     }
     // 密码的验证器
@@ -60,7 +62,9 @@ class Login extends Component {
         const { getFieldDecorator } = this.props.form;
         const { isLogin } = this.props;
         // 如果已经登录了
-        if(isLogin) return <Redirect to="/admin"/>
+        if(isLogin){
+            return <Redirect to="/admin"/>
+        }
         return (
             <div className='login'>
                 <header>

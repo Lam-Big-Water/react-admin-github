@@ -5,7 +5,7 @@ import 'nprogress/nprogress.css'
 import qs from 'querystring'
 
 const instance = axios.create({
-    timeout: 4000,//配置超时时间
+    timeout: 4000,
 });
 
 // 请求拦截器
