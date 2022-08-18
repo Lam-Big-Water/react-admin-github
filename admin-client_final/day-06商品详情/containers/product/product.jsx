@@ -128,7 +128,7 @@ class Product extends Component {
         return (
         <div>
             <Card 
-                title={
+            title={
                 <div>
                     <Select defaultValue="productName" onChange={(value)=>{this.setState({searchType:value})}}>
                         <Option value="productName">按名称搜索</Option>

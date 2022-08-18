@@ -46,5 +46,4 @@ export const reqSearchProduct = (pageNum,pageSize,searchType,keyWord)=>myAxios.g
 // 按id获取商品信息
 export const reqProdById = (productId)=>myAxios.get(`${BASE_URL}/manage/category/info`,{params:{productId}})
 
-// 请求删除图片 （根据图片唯一名字删除）
-export const reqDeletePicture = (name)=>myAxios.post(`${BASE_URL}/manage/img/delete`,{name})
+
