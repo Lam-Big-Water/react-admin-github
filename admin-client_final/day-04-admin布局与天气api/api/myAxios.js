@@ -4,7 +4,7 @@ import NProgress from 'nprogress';
 import store from '../redux/store';
 import {createDeleteUserInfoAction} from '../redux/action_creators/login_action'
 import 'nprogress/nprogress.css'
-import qs from 'querystring'
+import qs from 'qs'
 
 const instance = axios.create({
     timeout: 4000,//配置超时时间
